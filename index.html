@@ -153,8 +153,6 @@
               <h4>Envoyez-nous un message</h4>
               <form action="https://formsubmit.co/habitas.namy@gmail.com" method="POST">
                 <div class="form-group">
-                  <input type="hidden" name="_next" value="https://ton-site.github.io/habitasNamy/merci.html">
-                  <input type="hidden" name="_captcha" value="false">
                   <input type="text" placeholder="Nom et Prénom" required>
                   <input type="email" placeholder="Adresse email" required>
                   <input type="tel" placeholder="Téléphone" pattern="[0-9]{10}" title="Veuillez entrer un numéro de téléphone valide">
@@ -169,6 +167,9 @@
                 </div>
                 <textarea placeholder="Votre message" required rows="5"></textarea>
                 <button type="submit" class="submit-btn">Envoyer le message</button>
+
+                <input type="hidden" name="_next" value="https://ton-site.github.io/habitasNamy/merci.html">
+                <input type="hidden" name="_captcha" value="false">
               </form>
             </div>
           </div>

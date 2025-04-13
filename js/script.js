@@ -1,149 +1,154 @@
 // Effet de défilement pour l'en-tête
- // Ajoute une classe lorsque l'utilisateur fait défiler la page
- $(window).on('scroll', function(){
-   if($(window).scrollTop()){
-     $('header').addClass('nav-show');
-   } else{
-     $('header').removeClass('nav-show');
-   }
- });
+$(window).on('scroll', function(){
+  if($(window).scrollTop()){
+    $('header').addClass('nav-show');
+  } else{
+    $('header').removeClass('nav-show');
+  }
+});
 
- // Menu hamburger pour mobile
- // Gestion de l'ouverture/fermeture du menu mobile
- const navSlide = () => {
-   const hamburger = document.querySelector(".hamburger");
-   const navbar = document.querySelector(".nav-bar");
+// Menu hamburger pour mobile
+const navSlide = () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navbar = document.querySelector(".nav-bar");
 
-   hamburger.addEventListener('click', () => {
-     navbar.classList.toggle("nav-active");
-     hamburger.classList.toggle("toggle");
-   });
- }
+  hamburger.addEventListener('click', () => {
+    navbar.classList.toggle("nav-active");
+    hamburger.classList.toggle("toggle");
+  });
+}
 
- // Soumission du formulaire de contact
- // Gestion de l'envoi du formulaire avec message de confirmation
- document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
-   alert('Merci pour votre message ! Nous vous contacterons bientôt.');
-   // No need to prevent default, let the form submit
- });
+// Soumission du formulaire de contact
+document.querySelector('.contact-form form')?.addEventListener('submit', function(e) {
+  e.preventDefault();
 
- // Système de filtrage des propriétés
- // Permet de filtrer les logements par prix et nombre de chambres
- function filterProperties() {
-   const priceFilter = document.getElementById('priceFilter').value;
-   const roomFilter = document.getElementById('roomFilter').value;
-   const properties = document.querySelectorAll('.card');
+  const nom = this.querySelector('input[name="Nom et Prénom"]').value;
+  const email = this.querySelector('input[name="Email"]').value;
+  const telephone = this.querySelector('input[name="Téléphone"]').value;
+  const sujet = this.querySelector('select[name="Sujet"]').value;
+  const message = this.querySelector('textarea[name="Message"]').value;
 
-   properties.forEach(property => {
-     const price = parseInt(property.querySelector('.price').textContent);
-     const rooms = parseInt(property.querySelector('.work-content p').textContent);
-     
-     let showProperty = true;
+  if (nom && email && message) {
+    alert('Merci ' + nom + ' ! Votre message a été envoyé.');
+    this.submit();  // Laisse le formulaire s'envoyer (FormSubmit)
+  } else {
+    alert('Veuillez remplir tous les champs obligatoires.');
+  }
+});
 
-     if (priceFilter !== 'all') {
-       const [min, max] = priceFilter.split('-').map(v => v === '+' ? Infinity : parseInt(v));
-       if (price < min || price > max) showProperty = false;
-     }
+// Système de filtrage des propriétés
+function filterProperties() {
+  const priceFilter = document.getElementById('priceFilter').value;
+  const roomFilter = document.getElementById('roomFilter').value;
+  const properties = document.querySelectorAll('.card');
 
-     if (roomFilter !== 'all') {
-       const [min, max] = roomFilter.split('-').map(v => v === '+' ? Infinity : parseInt(v));
-       if (rooms < min || rooms > max) showProperty = false;
-     }
+  properties.forEach(property => {
+    const price = parseInt(property.querySelector('.price').textContent);
+    const rooms = parseInt(property.querySelector('.work-content p').textContent);
+    
+    let showProperty = true;
 
-     property.style.display = showProperty ? 'block' : 'none';
-   });
- }
+    if (priceFilter !== 'all') {
+      const [min, max] = priceFilter.split('-').map(v => v === '+' ? Infinity : parseInt(v));
+      if (price < min || price > max) showProperty = false;
+    }
 
- // Système de favoris
- function setupFavorites() {
-   const favoriteButtons = document.querySelectorAll('.favorite-btn');
-   
-   favoriteButtons.forEach(btn => {
-     btn.addEventListener('click', function() {
-       this.classList.toggle('active');
-       const propertyId = this.dataset.propertyId;
-       const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-       
-       if (this.classList.contains('active')) {
-         if (!favorites.includes(propertyId)) {
-           favorites.push(propertyId);
-         }
-       } else {
-         const index = favorites.indexOf(propertyId);
-         if (index > -1) {
-           favorites.splice(index, 1);
-         }
-       }
-       
-       localStorage.setItem('favorites', JSON.stringify(favorites));
-     });
-   });
- }
+    if (roomFilter !== 'all') {
+      const [min, max] = roomFilter.split('-').map(v => v === '+' ? Infinity : parseInt(v));
+      if (rooms < min || rooms > max) showProperty = false;
+    }
 
- // Modal functionality
- function openModal(propertyCard) {
-   const modal = document.getElementById('propertyModal');
-   const img = propertyCard.querySelector('.work-img');
-   const title = propertyCard.querySelector('h4');
-   const rooms = propertyCard.querySelector('.work-content p');
-   const price = propertyCard.querySelector('.price');
+    property.style.display = showProperty ? 'block' : 'none';
+  });
+}
 
-   document.getElementById('modalImage').src = img.src;
-   document.getElementById('modalTitle').textContent = title.textContent;
-   document.getElementById('modalRooms').textContent = rooms.textContent;
-   document.getElementById('modalPrice').textContent = price.textContent;
-   
-   modal.style.display = 'block';
- }
+// Système de favoris
+function setupFavorites() {
+  const favoriteButtons = document.querySelectorAll('.favorite-btn');
+  
+  favoriteButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      const propertyId = this.dataset.propertyId;
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
+      if (this.classList.contains('active')) {
+        if (!favorites.includes(propertyId)) {
+          favorites.push(propertyId);
+        }
+      } else {
+        const index = favorites.indexOf(propertyId);
+        if (index > -1) {
+          favorites.splice(index, 1);
+        }
+      }
+      
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    });
+  });
+}
 
- // Gestion des cookies
- function showCookieModal() {
-   if (!localStorage.getItem('cookieConsent')) {
-     document.getElementById('cookieModal').style.display = 'block';
-   }
- }
+// Modal functionality
+function openModal(propertyCard) {
+  const modal = document.getElementById('propertyModal');
+  const img = propertyCard.querySelector('.work-img');
+  const title = propertyCard.querySelector('h4');
+  const rooms = propertyCard.querySelector('.work-content p');
+  const price = propertyCard.querySelector('.price');
 
- function setCookieConsent(type) {
-   localStorage.setItem('cookieConsent', type);
-   document.getElementById('cookieModal').style.display = 'none';
- }
+  document.getElementById('modalImage').src = img.src;
+  document.getElementById('modalTitle').textContent = title.textContent;
+  document.getElementById('modalRooms').textContent = rooms.textContent;
+  document.getElementById('modalPrice').textContent = price.textContent;
+  
+  modal.style.display = 'block';
+}
 
- window.onload = () => {
-   navSlide();
-   showCookieModal();
-   setupFavorites();
-   
-   // Event listeners pour les boutons de cookies
-   document.getElementById('acceptAllCookies').addEventListener('click', () => setCookieConsent('all'));
-   document.getElementById('customizeCookies').addEventListener('click', () => setCookieConsent('custom'));
-   document.getElementById('rejectAllCookies').addEventListener('click', () => setCookieConsent('rejected'));
-   
-   // Ajouter les événements de filtrage
-   const priceFilter = document.getElementById('priceFilter');
-   const roomFilter = document.getElementById('roomFilter');
-   
-   if (priceFilter) priceFilter.addEventListener('change', filterProperties);
-   if (roomFilter) roomFilter.addEventListener('change', filterProperties);
+// Gestion des cookies
+function showCookieModal() {
+  if (!localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookieModal').style.display = 'block';
+  }
+}
 
-   // Modal events
-   document.querySelectorAll('.property-link').forEach(link => {
-     link.onclick = (e) => {
-       e.preventDefault();
-       openModal(link.closest('.card'));
-     }
-   });
+function setCookieConsent(type) {
+  localStorage.setItem('cookieConsent', type);
+  document.getElementById('cookieModal').style.display = 'none';
+}
 
-   const closeBtn = document.querySelector('.close');
-   if (closeBtn) {
-     closeBtn.onclick = () => {
-       document.getElementById('propertyModal').style.display = 'none';
-     }
-   }
+window.onload = () => {
+  navSlide();
+  showCookieModal();
+  setupFavorites();
+  
+  document.getElementById('acceptAllCookies')?.addEventListener('click', () => setCookieConsent('all'));
+  document.getElementById('customizeCookies')?.addEventListener('click', () => setCookieConsent('custom'));
+  document.getElementById('rejectAllCookies')?.addEventListener('click', () => setCookieConsent('rejected'));
+  
+  const priceFilter = document.getElementById('priceFilter');
+  const roomFilter = document.getElementById('roomFilter');
+  
+  if (priceFilter) priceFilter.addEventListener('change', filterProperties);
+  if (roomFilter) roomFilter.addEventListener('change', filterProperties);
 
-   window.onclick = (e) => {
-     const modal = document.getElementById('propertyModal');
-     if (e.target == modal) {
-       modal.style.display = 'none';
-     }
-   }
- };
+  document.querySelectorAll('.property-link').forEach(link => {
+    link.onclick = (e) => {
+      e.preventDefault();
+      openModal(link.closest('.card'));
+    }
+  });
+
+  const closeBtn = document.querySelector('.close');
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      document.getElementById('propertyModal').style.display = 'none';
+    }
+  }
+
+  window.onclick = (e) => {
+    const modal = document.getElementById('propertyModal');
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+};
