@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Locations de Logements</title>
+      <link href="style.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="modal.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+      
+      <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script defer src="script.js"></script>
+      <script defer src="modal.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a class="logo" href="#home">
+          <img src="attached_assets/IMG_7195.png" alt="Habitas.Namy Logo" class="logo-img">
+          <span class="logo-title">Habitas.Namy</span>
+        </a>
+        <nav>	
+          <ul class="nav-bar"><div class="bg"></div>
+            <li><a class="nav-link active" href="#home">Accueil</a></li>
+            <li><a class="nav-link" href="#properties">Logements</a></li>
+            <li><a class="nav-link" href="about.html">À Propos</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+          <div class="hamburger" aria-label="Menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div id="home">
+          <div class="filter"></div>
+          <section class="intro">
+            <h3>Locations de Qualité<hr></h3>
+            <p>Découvrez nos logements d'exception</p>
+            <p>Pour des séjours inoubliables</p>
+          </section> 
+        </div>  
+
+        <div id="properties"> 
+          <h3>Nos Logements<hr></h3>
+          <p>Découvrez notre sélection de propriétés.</p>
+          <div class="filters">
+            <select id="priceFilter">
+              <option value="all">Prix</option>
+              <option value="0-200">0-200€</option>
+              <option value="200-400">200-400€</option>
+              <option value="400+">400€+</option>
+            </select>
+            <select id="roomFilter">
+              <option value="all">Chambres</option>
+              <option value="1-2">1-2 chambres</option>
+              <option value="3-4">3-4 chambres</option>
+              <option value="5+">5+ chambres</option>
+            </select>
+          </div>
+          <div class="work-box">
+            <div class="work">
+              <div class="card">
+                <button class="favorite-btn" data-property-id="1">
+                  <i class="far fa-heart"></i>
+                </button>
+                <img class="work-img" src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
+                <a href="#" class="property-link">
+                  <div class="work-content">
+                    <h4>Appartement Paris</h4>
+                    <p>2 chambres - 80m²</p>
+                    <p class="price">200€/nuit</p>
+                  </div>
+                </a>
+              </div>
+              <div class="card">
+                <button class="favorite-btn" data-property-id="2">
+                  <i class="far fa-heart"></i>
+                </button>
+                <img class="work-img" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+                <a href="#" class="property-link">
+                  <div class="work-content">
+                    <h4>Villa Côte d'Azur</h4>
+                    <p>4 chambres - 200m²</p>
+                    <p class="price">450€/nuit</p>
+                  </div>
+                </a>
+              </div>
+              <div class="card">
+                <button class="favorite-btn" data-property-id="3">
+                  <i class="far fa-heart"></i>
+                </button>
+                <img class="work-img" src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35">
+                <a href="#" class="property-link">
+                  <div class="work-content">
+                    <h4>Chalet Alpes</h4>
+                    <p>3 chambres - 120m²</p>
+                    <p class="price">300€/nuit</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact">
+          <h3>Contactez-nous<hr></h3>
+          <p>Pour toute demande de réservation ou information complémentaire</p>
+          <div class="contact-container">
+            <div class="contact-info">
+              <h4>Vous avez des questions ou besoin d'aide pour trouver votre logement idéal ? Notre équipe est là pour vous accompagner.</h4>
+              
+              <div class="contact-details">
+                <div class="contact-item">
+                   <!-- <i class="fas fa-map-marker-alt"></i> -->
+                  <img src="/attached_assets/whatsapp-logo-02.png" alt="Logo Whatsapp" class="whatsapp-logo">
+                  <div>
+                    <h5>Get it on whatsapp light green png logo</h5>
+                    <p>Rue des Jardins, Cocody-Ambassades, Abidjan, Côte d'Ivoire</p>
+                  </div>
+                </div>
+                
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <div>
+                    <h5>Téléphone</h5>
+                    <p>+225 07 07 07 07 07</p>
+                  </div>
+                </div>
+                
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <div>
+                    <h5>Email</h5>
+                    <p><a href="mailto:habitas.namy@gmail.com">habitas.namy@gmail.com</a></p>
+                  </div>
+                </div>
+                
+                <div class="contact-item">
+                  <i class="fas fa-clock"></i>
+                  <div>
+                    <h5>Horaires d'ouverture</h5>
+                    <p>Lundi - Vendredi: 8h à 18h | Samedi: 9h à 14h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="contact-form">
+              <h4>Envoyez-nous un message</h4>
+              <form>
+                <div class="form-group">
+                  <input type="text" placeholder="Nom et Prénom" required>
+                  <input type="email" placeholder="Adresse email" required>
+                  <input type="tel" placeholder="Téléphone" pattern="[0-9]{10}" title="Veuillez entrer un numéro de téléphone valide">
+                </div>
+                <div class="form-group">
+                  <select name="sujet" required>
+                    <option value="">Sélectionnez un sujet</option>
+                    <option value="reservation">Réservation</option>
+                    <option value="information">Demande d'information</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+                <textarea placeholder="Votre message" required rows="5"></textarea>
+                <button type="submit" class="submit-btn">Envoyer le message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- Modal Détail -->
+      <div id="propertyModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="modal-image-container">
+            <img id="modalImage" src="" alt="Property Image">
+          </div>
+          <div class="modal-details">
+            <h2 id="modalTitle"></h2>
+            <div class="property-features">
+              <p id="modalRooms"></p>
+              <p id="modalSize"></p>
+              <p id="modalLocation"></p>
+            </div>
+            <p id="modalPrice" class="price-detail"></p>
+            <div id="modalDescription" class="property-description"></div>
+            <div class="modal-actions">
+              <button class="contact-btn">Contacter</button>
+              <button class="reserve-btn">Réserver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-brand">
+              <img src="attached_assets/IMG_01.png" alt="Habitas.Namy Logo" class="footer-logo">
+              <span class="footer-title">Habitas.Namy</span>
+            </div>
+            <p>Votre partenaire de confiance pour la location immobilière</p>
+          </div>
+          <div class="footer-section">
+            <h4>Liens Utiles</h4>
+            <a href="about.html">À Propos</a>
+            <a href="#properties">Nos Logements</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-section">
+            <h4>Légal</h4>
+            <a href="politique.html" class="privacy-link">Politique de confidentialité</a>
+            <a href="mentions.html" class="terms-link">Mentions légales</a>
+            <a href="cookies.html" class="cookies-settings">Paramètres des cookies</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Habitas.Namy - Tous droits réservés</p>
+        </div>
+      </footer>
+      
+    </div>
+
+    <!-- Cookie Consent Modal -->
+    <div id="cookieModal" class="cookie-modal">
+      <div class="cookie-content">
+        <h2>🍪 Gestion des Cookies</h2>
+        <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site. Ils nous permettent de vous offrir un service personnalisé et d'analyser notre trafic.</p>
+        <div class="cookie-options">
+          <button id="acceptAllCookies" class="cookie-btn accept">Tout accepter</button>
+          <button id="customizeCookies" class="cookie-btn customize">Personnaliser</button>
+          <button id="rejectAllCookies" class="cookie-btn reject">Continuer sans accepter</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
