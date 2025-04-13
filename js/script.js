@@ -26,7 +26,7 @@ const navSlide = () => {
 document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
   e.preventDefault();
   alert('Merci pour votre message ! Nous vous contacterons bientôt.');
-  this.reset();
+  e.target.reset(); // Use e.target instead of this
 });
 
 // Système de filtrage des propriétés
