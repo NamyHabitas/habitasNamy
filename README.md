@@ -32,7 +32,7 @@ Ce site web présente une plateforme de location immobilière moderne et respons
 - `script.js` - Fonctionnalités interactives
 - `attached_assets` - Dossier des ressources
 
-## Possible amelioraton 
+## Possible amelioration 
 - 🔒 Sécurité et confidentialité des données des utilisateurs
 - 📈 Statistiques et analyse pour améliorer l'expérience utilisateur
 
