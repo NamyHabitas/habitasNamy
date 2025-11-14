@@ -1,4 +1,5 @@
 # habitasNamy
+  <img src="attached_assets/IMG_7195.png" alt="Habitas.Namy Logo" class="logo-img">
 Location immobilier particuliers 
 
 # Site Web de Location Immobilière
